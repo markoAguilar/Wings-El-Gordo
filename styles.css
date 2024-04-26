@@ -1,0 +1,148 @@
+header {
+  display: flex;
+  flex-flow: column;
+  width: 1000px;
+  background: red;
+  height: 200px;
+}
+
+/***
+ * <header> tag class
+ * creates "persistent" navbar at top of webpage ***/
+.navbar {
+  height: 100px;
+  width: 100%;
+  font-size: 1.5rem;
+  position: -webkit-sticky;
+  position: sticky; /*Ensures that navbar stays at the top of the page when scrolling*/
+  z-index: 999; /* Ensure that navbar is always on top of all page content*/
+  top: 0;
+  background: black;
+}
+
+.navbar__container {
+  display: flex;
+  flex-flow: row;
+  justify-content: center; /*Elements in container are centered to the middle, vertically about the vertical axis*/
+  align-items: center; /* Elements are aligned horizontally on the horizontal axis of the navbar container*/
+  width: 100%;
+  height: 100px;
+}
+
+.navbar-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  width: 30%;
+  height: 100px;
+}
+
+.navbar-logo {
+  display: flex;
+  width: 100px;
+  height: 100px;
+}
+
+/***
+ * <h1> tag class
+ * WINGS EL GORDO ***/
+.navbar-title {
+  display: flex; /* enables a link to have a with and height*/
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  color: white;
+  z-index: 10;
+  font-family: Sans-Serif;
+}
+
+.navbar__menu {
+  display: flex; /* enables alignment of navbar menu-items*/
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  height: 100px;
+  width: 20%;
+}
+
+.navbar__item {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.navbar__links {
+  display: inline-block;
+  color: #fff;
+  font-size: 20pt;
+  font-family: Arial;
+  align-items: center;
+  text-decoration: none; /*removes link underlining*/
+  padding: 2rem 2rem;
+}
+
+.navbar--button {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+/*Online Order button*/
+/*** <a> tag class
+ * makes a button out of an a tag that changes color upon hovering.***/
+.order-button {
+  display: flex;
+  text-decoration: none;
+  padding: 10px 20px 10px 20px;
+  margin-right: 10px;
+  border-radius: 10px;
+  background: orange;
+  color: #ffff;
+}
+
+/* adds hover effect to "Online Order" button*/
+.order-button:hover {
+  -webkit-text-fill-color: #131313;
+  background: #4837ff;
+  transition: all 0.5s ease;
+}
+
+/* adds hover effect to links*/
+.navbar__links:hover {
+  color: red;
+  transition: all 0.3s ease;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+  height: 1000px;
+  width: 100%;
+  padding: none;
+  align-items: center;
+  justify-content: start;
+  background: rgb(230, 90, 90);
+}
+
+.insta-header {
+  display: flex;
+  height: 10%;
+  width: 40%;
+  justify-content: center;
+  align-items: center;
+}
+
+.insta-at {
+  display: block;
+  width: 80%;
+  background: pink;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.insta-embed {
+  display: block;
+  background: red;
+  width: 1000px;
+}
