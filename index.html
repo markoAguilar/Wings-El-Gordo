@@ -4,13 +4,24 @@
     <meta charset="UTF-8" />
     <title>Tab</title>
     <link href="styles.css" rel="stylesheet" type="text/css" />
+
+    <!-- the defer boolean attribute is set to indicate to a browser to execute
+    the script before firing DOMContentLoaded but after the document has been
+    parsed. do not use if no neighboring src attribute present-->
+    <script src="script.js" defer></script>
   </head>
 
   <body>
     <!-- Navbar -->
     <header class="navbar">
+      <!-- <div> container:
+        - commonly set attributes: style id class (s.i.c)
+        - used to style block of content -->
       <div class="navbar__container">
-        <!--Navbar Logo-->
+        <!-- <a> container
+            default display of an <a> tag is inline = min width & min height &
+            no newline. This a tag is the link to the home page index.html
+            present in all other pages as well. -->
         <a href="index.html" class="navbar-logo-link">
           <h1 class="navbar-title">Wings&nbsp;El&nbsp;Gordo</h1>
           <img class="navbar-logo" src="Images/logo.png" />
@@ -31,42 +42,65 @@
                     changed to denote a button-->
           <!--HTML BUTTON-->
           <a href="onlineOrder.html" class="order-button"
-            >Online&nbsp;Order (maybe lol)</a
+            >Online&nbsp;Order (maybe&nbsp;lol)</a
           >
         </ul>
       </div>
     </header>
 
     <main>
-      <div class="slider-thumb"></div>
+      <!-- CAROUSEL -->
+      <section arial-label="Newest Photos">
+        <!-- overall <div> container for our carousel of photos -->
+        <div class="carousel" data-carousel>
+          <!-- Buttons -->
+          <!-- using html entities &#8656; and &#8658; for the arrow buttons -->
+          <button class="carousel-button prev" data-carousel-button="prev">
+            &#8656;
+          </button>
+          <button class="carousel-button next" data-carousel-button="next">
+            &#8658;
+          </button>
+
+          <!-- use an unordered list for our list of photos -->
+          <ul data-slides>
+            <li class="slide" data-active>
+              <img
+                src="Images/burger-baconcheese.jpg"
+                alt="Bacon Cheese
+                            Burger"
+              />
+            </li>
+            <li class="slide">
+              <img
+                src="Images/burger-pineapple.jpg"
+                alt="Pineaple Bacon Cheeseburger"
+              />
+            </li>
+            <li class="slide">
+              <img src="Images/burger-smash.jpg" alt="Smash Burger" />
+            </li>
+            <li class="slide">
+              <img src="Images/wings-combo.jpg" alt="Combination of 2 wings" />
+            </li>
+          </ul>
+        </div>
+      </section>
+      <!-- END CAROUSEL -->
+
       <section class="insta-header">
         <h2 class="insta-at">@WINGSELGORDO</h2>
       </section>
 
       <!--
-          Beginning of Instagram embedd page
-          End at line 333
+          Beginning of Instagram embedd page. End at line 333
           Parent Container is <main> tag
+          STYLING has been moved from here to styles.css for <blockquote>
       -->
       <blockquote
         class="instagram-media"
         data-instgrm-permalink="https://www.instagram.com/wingselgordo/?utm_source=ig_embed&amp;utm_campaign=loading"
         data-instgrm-version="14"
-        style="
-          background: #fff;
-          border: 0;
-          border-radius: 30px;
-          box-shadow:
-            0 0 1px 0 rgba(0, 0, 0, 0.5),
-            0 1px 10px 0 rgba(0, 0, 0, 0.15);
-          margin: 1px;
-          max-width: 80%;
-          min-width: 326px;
-          padding: 0;
-          width: 99.375%;
-          width: -webkit-calc(100% - 2px);
-          width: calc(100% - 2px);
-        "
       >
         <div style="padding: 16px">
           <a

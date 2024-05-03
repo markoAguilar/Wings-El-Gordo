@@ -1,60 +1,112 @@
+* {
+  /*what is border-box box-sizing?*/
+  box-sizing: border-box;
+}
+
 body {
   background: linear-gradient(90deg, #e52e91, #ff0000);
+  margin: 0;
 }
 
 main {
   display: flex;
   flex-flow: column;
-  height: 1000px;
-  width: 100%;
   padding: none;
+  margin: none;
+  /*** why does align-items work and not justify-content when centering all
+   * items on main??? ***/
   align-items: center;
-  justify-content: start;
 }
 
-.slider-thumb::before {
+.carousel {
+  position: relative;
+  width: 80vw;
+  height: 100vh;
+}
+
+/***
+ * position to absolute
+ * inset=0 makes top left right and bottom of the image 0 makes stretch to fill
+ * opacity to 0 makes image not visible. Active image will be made visible in
+ * .slide[data-active] class below ***/
+.slide {
   position: absolute;
-  content: "";
-  left: 30%;
-  top: 20%;
-  width: 70%;
-  height: 90%;
-  background: #17141d;
-  border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
-  /*** z-index of the slider-thumb class div is 0 by default. But we want the slider
-   * to be below all items on the main z-index. ***/
-  z-index: -1;
-  will-change: border-radius, transform, opacity;
+  inset: 0;
+  opacity: 0;
+}
 
-  animation: sliderShape 5s linear infinite;
+.slide[data-active] {
+  opacity: 1;
+}
+
+.slide > img {
   display: block;
-  -webkit-animation: sliderShape 5s linear infinite;
+  width: 100%;
+  height: 100%;
+  /* object-fit: so that the image covers the entire screen and maintain aspect
+   * ratio. object-position to focus on center of image. ***/
+  object-fit: cover;
+  object-position: center;
+  border-radius: 20px;
 }
-@keyframes sliderShape {
-  0%,
-  100% {
-    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-    transform: translate3d(0, 0, 0) rotateZ(0.01deg);
-  }
-  34% {
-    border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
-    transform: translate3d(0, 5px, 0) rotateZ(0.01deg);
-  }
-  50% {
-    transform: translate3d(0, 0, 0) rotateZ(0.01deg);
-  }
-  67% {
-    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
-    transform: translate3d(0, -3px, 0) rotateZ(0.01deg);
-  }
+
+/***
+ * styling for the html entities, which are arrows ***/
+.carousel-button {
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 4rem;
+  z-index: 4;
+
+  /* centers buttons to middle of page */
+  top: 50%;
+
+  /* actually centers buttons to middle of page?????? */
+  transform: translateY(-50%);
+
+  color: rgba(255, 255, 255, 0.5);
+
+  cursor: pointer;
+
+  border-radius: 0.25rem;
+
+  padding: 0 0.5rem;
+
+  background-color: rgba(0, 0, 0, 0.1);
 }
+
+/***
+ * Accesibility: for people navigating with the tab button for example!! ***/
+.carousel-button:hover,
+.carousel-button:focus {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/*** for some reason this effect is not taking place. Theres no outline for
+ * example ***/
+.carousel-button:focus {
+  outline: 1px solid black;
+}
+
+/*** position previous button 1rem away from the left side of the page ***/
+.carousel-button.prev {
+  left: 1rem;
+}
+
+/*** position next button 1rem away from the right side of the page ***/
+.carousel-button.next {
+  right: 1rem;
+}
+/***
+ * END CAROUSEL STYLING
+ * ***/
 
 header {
   position: absolute;
   display: flex;
-  flex-flow: column;
   width: 1000px;
-  background: red;
 }
 
 /***
@@ -79,14 +131,19 @@ header {
   justify-content: center; /*Elements in container are centered to the middle, vertically about the vertical axis*/
   align-items: center; /* Elements are aligned horizontally on the horizontal axis of the navbar container*/
   width: 100%;
-  height: auto;
 }
 
+/*** <a> tag container:
+ * default display of an <a> tag is inline = min width, min height
+ * display set to inline-flex = min width, custom height, flex children 
+ * this <a> tag is a child element of <div> block container of class .navbar-container
+ * links to the main page index.html and should be included in all other pages ***/
 .navbar-logo-link {
-  display: flex;
+  display: inline-flex;
+  justify-content: center;
   align-items: center;
   text-decoration: none;
-  height: 100%;
+  height: 100px;
 }
 
 .navbar-logo {
@@ -107,17 +164,21 @@ header {
   font-family: Sans-Serif;
 }
 
+/*** <ul> tag container:
+ * default display of a <ul> tag is block = full width (new line), has margin
+   before and after. Other default ul styling is padding left and margin top and bottom.
+ * set display to inline-flex = min width flex element ***/
 .navbar__menu {
-  display: flex; /* enables alignment of navbar menu-items*/
+  display: inline-flex; /* enables alignment of navbar menu-items*/
   justify-content: center;
   align-items: center;
   list-style: none;
-  height: 100%;
+  height: 50%;
 }
 
 .navbar__item {
   display: flex;
-  height: 100%;
+  height: auto;
 }
 
 .navbar__links {
@@ -162,17 +223,18 @@ header {
   transition: all 0.3s ease;
 }
 
+/*** <header> container ***/
 .insta-header {
   display: flex;
-  height: 10%;
-  width: 40%;
+  width: 80vw;
   justify-content: center;
   align-items: center;
 }
 
+/*** <h2> container
+ * parent container is .insta-header class***/
 .insta-at {
-  display: block;
-  width: 80%;
+  width: 100%;
   background: pink;
   text-align: center;
   border-radius: 20px;
@@ -180,6 +242,31 @@ header {
 
 .insta-embed {
   display: block;
-  background: red;
-  width: 1000px;
+  width: 100vw;
+  height: 100vh;
+}
+
+/*** Top portion was included ***/
+.instagram-media {
+  /*** TOP Portion ***/
+  background: #fff;
+  border: 0;
+  border-radius: 30px;
+  box-shadow:
+    0 0 1px 0 rgba(0, 0, 0, 0.5),
+    0 1px 10px 0 rgba(0, 0, 0, 0.15);
+  margin: 1px;
+  width: 80vw;
+  height: 1000px;
+
+  /*** BOTTOM Portion ***/
+}
+
+footer {
+  display: block;
+  width: 100vw;
+  height: 100px; 
+  position: sticky;
+  bottom: 0vh;
+  background: black;
 }
