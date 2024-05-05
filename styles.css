@@ -1,10 +1,17 @@
+:root {
+  --element-width: 85vw;
+}
+
 * {
   /*what is border-box box-sizing?*/
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: linear-gradient(90deg, #e52e91, #ff0000);
+  background-image: url("Images/logo.png");
+  background-repeat: repeat;
   margin: 0;
 }
 
@@ -16,12 +23,13 @@ main {
   /*** why does align-items work and not justify-content when centering all
    * items on main??? ***/
   align-items: center;
+  justify-content: center;
 }
 
 .carousel {
   position: relative;
-  width: 80vw;
-  height: 100vh;
+  width: var(--element-width);
+  height: 80vh;
 }
 
 /***
@@ -40,14 +48,12 @@ main {
 }
 
 .slide > img {
-  display: block;
   width: 100%;
   height: 100%;
   /* object-fit: so that the image covers the entire screen and maintain aspect
    * ratio. object-position to focus on center of image. ***/
   object-fit: cover;
   object-position: center;
-  border-radius: 20px;
 }
 
 /***
@@ -122,6 +128,7 @@ header {
   position: sticky; /*Ensures that navbar stays at the top of the page when scrolling*/
   z-index: 999; /* Ensure that navbar is always on top of all page content*/
   top: 0;
+  box-shadow: 0px 10px 30px 10px white;
 }
 
 .navbar__container {
@@ -226,7 +233,7 @@ header {
 /*** <header> container ***/
 .insta-header {
   display: flex;
-  width: 80vw;
+  width: var(--element-width);
   justify-content: center;
   align-items: center;
 }
@@ -240,12 +247,6 @@ header {
   border-radius: 20px;
 }
 
-.insta-embed {
-  display: block;
-  width: 100vw;
-  height: 100vh;
-}
-
 /*** Top portion was included ***/
 .instagram-media {
   /*** TOP Portion ***/
@@ -256,16 +257,17 @@ header {
     0 0 1px 0 rgba(0, 0, 0, 0.5),
     0 1px 10px 0 rgba(0, 0, 0, 0.15);
   margin: 1px;
-  width: 80vw;
-  height: 1000px;
+  width: 85vw;
+  height: 100%;
 
   /*** BOTTOM Portion ***/
+  margin: 25px 0px;
 }
 
 footer {
   display: block;
   width: 100vw;
-  height: 100px; 
+  height: 100px;
   position: sticky;
   bottom: 0vh;
   background: black;
