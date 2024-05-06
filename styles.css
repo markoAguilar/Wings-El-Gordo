@@ -23,7 +23,10 @@ main {
   padding: none;
   margin: none;
   align-items: center;
-  justify-content: center;
+}
+
+main * {
+  margin: 2rem 0;
 }
 
 .mini-menu {
