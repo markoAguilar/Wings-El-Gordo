@@ -303,7 +303,7 @@ header {
   margin: 1px;
   width: var(--element-width);
   /*** The bottom line for the height CANNOT be changed ***/
-  height: 145vh;
+  height: 1000px;
 
   /*** BOTTOM Portion ***/
   margin: 25px 0px;
