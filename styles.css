@@ -13,26 +13,24 @@ body {
   background-image: url("Images/logo.png");
   background-repeat: repeat;
   margin: 0;
+  padding: 0;
 }
 
 main {
   display: flex;
   flex-flow: column;
+  flex-grow: 0;
   padding: none;
   margin: none;
-  /*** why does align-items work and not justify-content when centering all
-   * items on main??? ***/
   align-items: center;
   justify-content: center;
-  padding-top: 3.5rem;
-  padding-bottom: 5rem;
 }
 
 .mini-menu {
   height: 50vh;
   width: var(--element-width);
   display: flex;
-  flex-flow: row;
+  border-radius: 20px;
 }
 
 .carousel,
@@ -157,7 +155,7 @@ main {
 header {
   position: absolute;
   display: flex;
-  width: 1000px;
+  width: 100vw;
 }
 
 /***
@@ -167,7 +165,7 @@ header {
   background: black;
   display: flex;
   height: auto;
-  width: 100%;
+  width: 100vw;
   font-size: 1.5rem;
   position: -webkit-sticky;
   position: sticky; /*Ensures that navbar stays at the top of the page when scrolling*/
@@ -296,17 +294,18 @@ header {
   /*** TOP Portion ***/
   background: #fff;
   border: 0;
-  border-radius: 30px;
+  border-radius: 20px;
   box-shadow:
     0 0 1px 0 rgba(0, 0, 0, 0.5),
     0 1px 10px 0 rgba(0, 0, 0, 0.15);
   margin: 1px;
-  width: var(--element-width);
-  /*** The bottom line for the height CANNOT be changed ***/
-  height: 1000px;
-
-  /*** BOTTOM Portion ***/
-  margin: 25px 0px;
+  max-height: 800px;
+  max-width: var(--element-width);
+  min-width: 326px;
+  padding: 0;
+  width: 99.375%;
+  width: -webkit-calc(100% - 2px);
+  width: calc(100% - 2px);
 }
 
 footer {
