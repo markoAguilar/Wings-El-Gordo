@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <title>Wings El Gordo</title>
     <link href="styles.css" rel="stylesheet" type="text/css" />
-
     <!-- the defer boolean attribute is set to indicate to a browser to execute
     the script before firing DOMContentLoaded but after the document has been
     parsed. do not use if no neighboring src attribute present-->
@@ -31,7 +30,7 @@
         <ul class="navbar__menu">
           <!--Navbar Menu Items-->
           <li class="navbar__item">
-            <a href="directions.html" class="navbar__links">Locations</a>
+            <a href="locations.html" class="navbar__links">Locations</a>
           </li>
 
           <li class="navbar__item">
@@ -336,8 +335,9 @@
           End of Instagram embedd page
       -->
 
-      <!-- CAROUSEL -->
-      <section arial-label="Newest Photos">
+      <!-- mini-Menu -->
+      <section class="mini-menu">
+        <!-- CAROUSEL -->
         <!-- overall <div> container for our carousel of photos -->
         <div class="carousel" data-carousel>
           <!-- Buttons -->
@@ -370,6 +370,21 @@
             <li class="slide">
               <img src="Images/wings-combo.jpg" alt="Combination of 2 wings" />
             </li>
+
+            <li class="slide">
+              <img src="Images/potato-loaded.jpg" alt="Loaded Potato" />
+            </li>
+          </ul>
+        </div>
+
+        <div class="menu-prices-container">
+          <span>*All Burgers Come W/ Fries</span>
+          <ul menu-prices>
+            <li>Bacon Cheeseburger $10</li>
+            <li>Bacon Pineapple Cheeseburger $12</li>
+            <li>Smash Burger $12</li>
+            <li>12 Wings Order (Well Done) $15</li>
+            <li>Loaded Potato $12</li>
           </ul>
         </div>
       </section>

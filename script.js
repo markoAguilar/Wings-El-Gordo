@@ -20,6 +20,10 @@ buttons.forEach((button) => {
       .closest("[data-carousel]")
       .querySelector("[data-slides]");
 
+    const menuPrices = button
+      .closest(".mini-menu")
+      .querySelector(".menu-prices-container").children[1];
+
     /* whatever slide is active*/
     const activeSlide = slides.querySelector("[data-active]");
 
@@ -27,10 +31,14 @@ buttons.forEach((button) => {
      * converts the slides children into an array and gets the value of the
      * index of the activeSlide it will then add the offset that was either
      * 1 or -1. The index is assigned to newIndex */
+    let oldIndex = [...slides.children].indexOf(activeSlide);
+    menuPrices.children[oldIndex].setAttribute("style", "color:white;");
+
     let newIndex = [...slides.children].indexOf(activeSlide) + offset;
     if (newIndex < 0) newIndex = slides.children.length - 1;
     if (newIndex >= slides.children.length) newIndex = 0;
 
+    menuPrices.children[newIndex].setAttribute("style", "color: red;");
     slides.children[newIndex].dataset.active = true;
     delete activeSlide.dataset.active;
   });
