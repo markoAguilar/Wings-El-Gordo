@@ -1,46 +1,84 @@
 :root {
-  --element-width: 95vw;
+  --element-width: 90vw;
 }
 
 * {
   /*what is border-box box-sizing?*/
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
+/***
+ * For Desktop (When the width is more than 35em). I think it is best practive
+ * to code for mobile first. Therefore, this should be on of the last sections
+ * to work on right?!  ***/
+@media (min-width: 35em) {
+  .instagram-media {
+    max-width: var(--element-width);
+  }
+}
+
+footer {
+  display: block;
+  width: 100vw;
+  height: 60px;
+  position: sticky;
+  bottom: 0;
+  background: black;
+}
+/***
+ * creates background image of the html body to be a repeated image, the image
+ * will we the same as the one used in the logo in the navbar. Remove margin and
+ * padding from body and hide any content that overflows in the x-direction. ***/
 body {
   background-image: url("Images/logo.png");
+  /*** keeps background image fixed as we scroll the page ***/
+  background-attachment: fixed;
   background-repeat: repeat;
+  background-position-x: center;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 main {
   display: flex;
   flex-flow: column;
   flex-grow: 0;
-  padding: none;
-  margin: none;
   align-items: center;
 }
 
+/* all <main> child elements will have a 3rem bottom and top margin 
+ * UNCOMMENT THE FOLLOWING SECTION OF CODE AND SEE how this caused you so much
+ * trouble before lmao smh. 
 main * {
-  margin: 2rem 0;
+  margin: 3rem 0;
+} ***/
+
+.mini-menu,
+.insta-header,
+.insatgram-media {
+  margin-bottom: 4rem;
+  margin-top: 4rem;
 }
 
+/***
+ * 
+ * ***/
 .mini-menu {
-  height: 50vh;
+  position: relative;
+  height: 60vh;
   width: var(--element-width);
   display: flex;
   border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .carousel,
 .menu-prices-container {
   height: 100%;
   width: calc(var(--element-width) / 2);
-  display: flex;
 }
 
 .carousel {
@@ -48,34 +86,34 @@ main * {
 }
 
 .menu-prices-container {
-  flex-flow: column;
   color: white;
-  background: rgba(0, 0, 0, 0.8);
   text-align: center;
-  justify-content: space-evenly;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
 }
 
-.menu-prices-container > span {
+/*Makes the text '* All Burgers Come With Fries Included' red as well as the
+ * first menu item red since it is the first one to be displayed */
+.menu-prices-container > span,
+.menu-prices-container  li:nth-of-type(1){
   color: red;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .menu-prices-container ul[menu-prices] {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 100%;
-  width: 100%;
   list-style: none;
-}
-
-.menu-prices-container ul[menu-prices] li {
-  width: 100%;
+  /*<ul>'s have margin by default. so let's get rid of it! :) */
+  margin: 0;
 }
 
 .menu-prices-container ul li:hover {
   color: red;
+}
+
+ul[data-slides] {
+  width: 100%;
+  height: 100%;
 }
 
 /***
@@ -277,7 +315,7 @@ header {
 
 /*** <header> container ***/
 .insta-header {
-  display: flex;
+  display: flex/2);
   width: var(--element-width);
   justify-content: center;
   align-items: center;
@@ -303,19 +341,13 @@ header {
     0 1px 10px 0 rgba(0, 0, 0, 0.15);
   margin: 1px;
   max-height: 800px;
-  max-width: var(--element-width);
+
+  /*** This line controls the max width**/
+  max-width: calc(var(--element-width) / 2);
+
   min-width: 326px;
   padding: 0;
   width: 99.375%;
   width: -webkit-calc(100% - 2px);
   width: calc(100% - 2px);
-}
-
-footer {
-  display: block;
-  width: 100vw;
-  height: 60px;
-  position: sticky;
-  bottom: 0;
-  background: black;
 }
